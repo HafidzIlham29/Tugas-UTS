@@ -1,0 +1,41 @@
+name: campus-announcement
+
+services:
+  # ---------------------------------------------------------------- Backend
+  backend:
+    build: ./backend
+    image: announcement-backend:latest
+    container_name: announcement-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      # NAMED VOLUME: tempat announcements.json, tetap ada walau container dihapus
+      - announcement-data:/var/lib/backend_data
+    networks:
+      - app-net
+
+  # --------------------------------------------------------------- Frontend
+  frontend:
+    image: nginx:1.27-alpine
+    container_name: announcement-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8081:80"
+    volumes:
+      # BIND MOUNT: file di folder host langsung terbaca, ubah index.html tanpa rebuild
+      - ./frontend:/usr/share/nginx/html:ro
+      - ./nginx:/etc/nginx/conf.d:ro
+    networks:
+      - app-net
+
+networks:
+  # Custom bridge network terisolasi; antar-container saling memanggil lewat nama service
+  app-net:
+    driver: bridge
+
+volumes:
+  announcement-data:
+    name: announcement-data
