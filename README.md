@@ -7,10 +7,7 @@ Ujian Chunin (UTS) - Mata Kuliah Cloud Computing, Telkom University
 
 | No | Nama | NIM |
 |----|------|-----|
-| 1 | _isi nama anggota 1_ | _isi NIM_ |
-| 2 | _isi nama anggota 2_ | _isi NIM_ |
-| 3 | _isi nama anggota 3_ | _isi NIM_ |
-| 4 | _(opsional)_ | _(opsional)_ |
+| 1 | _Hafidz Ilham Wibowo_ | _101012330414_ |
 
 **Studi kasus yang dipilih:** #2 - Papan Pengumuman Kampus (Campus Announcement Board)
 Portal informasi pengumuman perkuliahan dan kegiatan Ormawa.
